@@ -4,19 +4,17 @@ import { Observable } from 'rxjs';
 import { Doctor } from 'src/app/models/Doctor';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-doctor',
+  templateUrl: './doctor.component.html',
+  styleUrls: ['./doctor.component.scss']
 })
-export class AppComponent {
-  title = 'app-medica';
-
+export class DoctorComponent {
   doctor$: Observable<Doctor[]>;
- firestore: Firestore = inject(Firestore);
+  firestore: Firestore = inject(Firestore);
+
 
   constructor() { 
-    const itemCollection = collection(this.firestore, 'app-medica');
+    const itemCollection = collection(this.firestore, 'Doctor');
     this.doctor$ = collectionData(itemCollection) as Observable<Doctor[]>;
   }
- 
 }

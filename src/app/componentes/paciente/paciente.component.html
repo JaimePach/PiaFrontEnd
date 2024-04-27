@@ -1,0 +1,45 @@
+
+<p>
+<mat-label>Seleccionar Fecha:</mat-label>
+<mat-card class="demo-inline-calendar-card">
+  <mat-calendar [(selected)]="fecha"></mat-calendar>
+</mat-card>
+</p>
+<form (ngSubmit)="AgregarCita()">
+  <p>
+    <mat-form-field>
+      <mat-label>Seleccionar Horario:</mat-label>
+      <input matInput type="text" [(ngModel)]="hora" name="hora">
+    </mat-form-field>
+  </p>
+  
+  <div class="example-container">
+    <mat-form-field>
+      <mat-label>Correo Electronico: </mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required name="email">
+    </mat-form-field>
+  </div>
+  
+  <p>
+    <mat-form-field>
+      <mat-label>Nombre de Paciente:</mat-label>
+      <input matInput type="text" [(ngModel)]="nombre" name="nombre">
+    </mat-form-field>
+  </p>
+  
+  <p>
+    <mat-form-field>
+      <mat-label>Sexo:</mat-label>
+      <mat-select [(value)]="genero" name="genero">
+        <mat-option value="masculino">Masculino</mat-option>
+        <mat-option value="femenino">Femenino</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  
+  <p>
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
+  </p>
+  
+</form>
+
