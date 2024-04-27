@@ -1,15 +1,35 @@
 
-<p>
-<mat-label>Seleccionar Fecha:</mat-label>
-<mat-card class="demo-inline-calendar-card">
-  <mat-calendar [(selected)]="fecha"></mat-calendar>
-</mat-card>
-</p>
+
 <form (ngSubmit)="AgregarCita()">
   <p>
+    <mat-label>Seleccionar Fecha:</mat-label>
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar [(selected)]="fecha"></mat-calendar>
+    </mat-card>
+  </p>
+
+
+  <p>
     <mat-form-field>
-      <mat-label>Seleccionar Horario:</mat-label>
-      <input matInput type="text" [(ngModel)]="hora" name="hora">
+      <mat-label>Hora</mat-label>
+      <mat-select>
+        <mat-option value="one">23</mat-option>
+        <mat-option value="two">22</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Min</mat-label>
+      <mat-select>
+        <mat-option value="one">23</mat-option>
+        <mat-option value="two">22</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>AM/PM</mat-label>
+      <mat-select>
+        <mat-option value="AM">AM</mat-option>
+        <mat-option value="PM">PM</mat-option>
+      </mat-select>
     </mat-form-field>
   </p>
   
