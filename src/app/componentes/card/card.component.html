@@ -1,6 +1,7 @@
 
 <div class="card-container">
-  <mat-card *ngFor="let paciente of pacientes" class="paciente-card">
+  <!--Filtra CitaMedicas-->
+  <mat-card *ngFor="let paciente of Paciente$ | async" class="paciente-card">
     <mat-card-header>
       <div mat-card-avatar class="avatar"></div>
       <mat-card-title>{{ paciente.NombreUsuario }}</mat-card-title>

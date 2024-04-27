@@ -7,12 +7,11 @@ import { ListComponent } from './componentes/list/list.component';
 import { CardComponent } from './componentes/card/card.component';
 
 const routes: Routes = [
-  {path: 'Principal', component: AppComponent},
   {path: 'Doctor', component: DoctorComponent},
   {path: 'Paciente', component: PacienteComponent},
   {path: 'Lista', component: ListComponent},
   {path: 'Card', component: CardComponent},
-  {path: '**', redirectTo: '/Principal', pathMatch: 'full' },
+  {path: '', redirectTo: '/Doctor', pathMatch: 'full' },
 
 
 

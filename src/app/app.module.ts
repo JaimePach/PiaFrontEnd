@@ -24,7 +24,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import {MatTabsModule} from '@angular/material/tabs'
+import {MatIconModule} from '@angular/material/icon'
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -44,19 +45,20 @@ import {MatTabsModule} from '@angular/material/tabs'
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
     MatCardModule,
+    MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
     FormsModule,
     MatButtonModule,
     MatListModule,
+    MatIconModule,
     MatDividerModule,
     MatOptionModule,
     MatSelectModule,
     MatFormFieldModule,
     MatTabsModule,
     ReactiveFormsModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

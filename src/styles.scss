@@ -1,4 +1,21 @@
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+
+.mat-mdc-list-base,
+.mdc-list-item__primary-text {
+    --mdc-list-list-item-label-text-color: black !important;
+}
+.mdc-list-item:hover .mdc-list-item__primary-text {
+    --mdc-list-list-item-hover-label-text-color:black;
+}
+
+.mat-mdc-button:not(:disabled) {
+    color: black !important;
+}
+
+.mat-mdc-icon-button:disabled {
+    --mdc-icon-button-disabled-icon-color: rgba(198, 198, 198, 0.602) !important;
+}

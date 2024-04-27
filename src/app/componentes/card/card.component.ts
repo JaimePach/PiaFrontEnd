@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, AfterViewChecked } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Doctor } from 'src/app/models/Doctor';
@@ -9,7 +9,7 @@ import { Paciente } from 'src/app/models/Paciente';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent {
+export class CardComponent implements AfterViewChecked{
   Paciente$: Observable<Doctor[]>;
   firestore: Firestore = inject(Firestore);
 
@@ -19,9 +19,18 @@ export class CardComponent {
     { IdPaciente: 3, Nombre: 'Pedro', ApellidoPaterno: 'Díaz', ApellidoMaterno: 'Pérez', NombreUsuario: 'pedrito21' },
   ];
 
+  @Input() estado: string = '';
+
   ngOnInit(): void {
-    this.mostrarPacientes();
+    
+    //this.mostrarPacientes();
   }
+
+  ngAfterViewChecked(): void {
+   
+  }
+
+  
   mostrarPacientes() {
     this.pacientes.forEach(paciente => {
       console.log('ID: ' + paciente.IdPaciente);
@@ -32,6 +41,7 @@ export class CardComponent {
       console.log('-------------------------');
     });
   }
+
 
 
   constructor() { 
