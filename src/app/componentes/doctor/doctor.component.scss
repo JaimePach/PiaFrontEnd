@@ -1,8 +1,15 @@
 .mat-tab-group {
     margin-bottom: 48px;
+    
+  }
+  .mat-mdc-tab-group{
+    --mat-tab-header-inactive-label-text-color: black;
+    --mat-tab-header-inactive-hover-label-text-color: blue;
+      max-width: 75%;
+      margin-left: 5%;
+      margin-right: 5%;
+
   }
 
-  .mat-stretch-tabs{
-    font-size: black;
-  }
 
+  

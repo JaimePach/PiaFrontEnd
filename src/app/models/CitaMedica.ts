@@ -1,10 +1,20 @@
-export interface CitaMedica{
+export interface ICitaMedica{
     IdCitaMedica: number;
-    FechaCita: Date;
     Estado: string;
     Fecha: Date;
-    Hora: Date;
+    Hora: string;
     DoctorId: number;
     PacienteId: number;
+
+}
+export class CitaMedica{
+    IdCitaMedica: number;
+    Estado: string;
+    Fecha: Date;
+    Hora: string;
+    DoctorId: number;
+    PacienteId: number;
+
+    constructor(){}
 
 }

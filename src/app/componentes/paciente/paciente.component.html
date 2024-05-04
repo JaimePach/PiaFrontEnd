@@ -1,56 +1,38 @@
 
-
 <form (ngSubmit)="AgregarCita()">
-  <p>
-    <mat-label>Seleccionar Fecha:</mat-label>
-    <mat-card class="demo-inline-calendar-card">
-      <mat-calendar [(selected)]="fecha"></mat-calendar>
-    </mat-card>
-  </p>
 
+   <p>
+  <mat-label>Seleccionar Fecha:</mat-label>
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar [(selected)]="citaMedica.Fecha"></mat-calendar>
+    </mat-card>
+   </p>
 
   <p>
     <mat-form-field>
       <mat-label>Hora</mat-label>
-      <mat-select>
-        <mat-option value="one">23</mat-option>
-        <mat-option value="two">22</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Min</mat-label>
-      <mat-select>
-        <mat-option value="one">23</mat-option>
-        <mat-option value="two">22</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>AM/PM</mat-label>
-      <mat-select>
-        <mat-option value="AM">AM</mat-option>
-        <mat-option value="PM">PM</mat-option>
-      </mat-select>
+      <input matInput placeholder="Hora" type="time" name="Hora" #Hora="ngModel" [(ngModel)]="citaMedica.Hora" >
     </mat-form-field>
   </p>
   
   <div class="example-container">
     <mat-form-field>
       <mat-label>Correo Electronico: </mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required name="email">
+      <input matInput placeholder="pat@example.com" name="correo" #correo="ngModel" [(ngModel)]="paciente.correo" required >
     </mat-form-field>
   </div>
   
   <p>
     <mat-form-field>
       <mat-label>Nombre de Paciente:</mat-label>
-      <input matInput type="text" [(ngModel)]="nombre" name="nombre">
+      <input matInput placeholder="Nombre" type="text" name="Nombre" #Nombre="ngModel" [(ngModel)]="paciente.Nombre" >
     </mat-form-field>
   </p>
   
   <p>
     <mat-form-field>
       <mat-label>Sexo:</mat-label>
-      <mat-select [(value)]="genero" name="genero">
+      <mat-select placeholder="Elige Sexo" [(value)]="paciente.genero" name="genero">
         <mat-option value="masculino">Masculino</mat-option>
         <mat-option value="femenino">Femenino</mat-option>
       </mat-select>

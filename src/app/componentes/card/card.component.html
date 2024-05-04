@@ -1,10 +1,25 @@
-
-<div class="card-container">
-  <!--Filtra CitaMedicas-->
-  <mat-card *ngFor="let paciente of Paciente$ | async" class="paciente-card">
+<div *ngIf="estado !=='Todas'">
+<div *ngFor="let paciente of Paciente$| async" class="card-container">
+  <mat-card *ngIf="paciente.Estado === estado" class="paciente-card">
     <mat-card-header>
       <div mat-card-avatar class="avatar"></div>
-      <mat-card-title>{{ paciente.NombreUsuario }}</mat-card-title>
+      <mat-card-title>{{ paciente.Hora }}</mat-card-title>
+      <p class="card-text">{{ estado }}</p>
     </mat-card-header>
     </mat-card>
   </div>
+  </div>
+
+  <div *ngIf="estado ==='Todas'">
+  <div *ngFor="let paciente of Paciente$| async" class="card-container">
+  <mat-card class="paciente-card">
+    <mat-card-header>
+      <div mat-card-avatar class="avatar"></div>
+      <mat-card-title>{{ paciente.Hora }}</mat-card-title>
+      <p class="card-text">{{ estado }}</p>
+    </mat-card-header>
+    </mat-card>
+  </div>
+</div>
+ 
+  

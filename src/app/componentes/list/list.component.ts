@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Doctor } from 'src/app/models/Doctor';
+import { CitaMedica } from 'src/app/models/CitaMedica';
 
 @Component({
   selector: 'app-list',
@@ -9,13 +9,20 @@ import { Doctor } from 'src/app/models/Doctor';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent  {
-  Paciente$: Observable<Doctor[]>;
+  Paciente$: Observable<CitaMedica[]>;
   firestore: Firestore = inject(Firestore);
+
+  
+  @Input() estado: string = '';
+
+  ngOnInit(): void {
+    
+  }
 
 
   constructor() { 
-    const itemCollection = collection(this.firestore, 'app-medica');
-    this.Paciente$ = collectionData(itemCollection) as Observable<Doctor[]>;
+    const itemCollection = collection(this.firestore, 'CitaMedica');
+    this.Paciente$ = collectionData(itemCollection) as Observable<CitaMedica[]>;
   }
 
   

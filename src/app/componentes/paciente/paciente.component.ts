@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, Validators} from '@angular/forms';
-import {merge} from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { CitaMedica } from 'src/app/models/CitaMedica';
+import { Usuario, IUsuario } from 'src/app/models/Usuario';
+import { addDoc, Firestore, collection, collectionData, CollectionReference, DocumentReference } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+
 
 
 @Component({
@@ -12,20 +15,38 @@ import {merge} from 'rxjs';
 
 export class PacienteComponent {
 
-  selected: Date | null | undefined;
-  email = new FormControl('', [Validators.required, Validators.email]);  
-  fecha: Date | undefined;
-  hora: string | undefined;
-  nombre: string | undefined;
-  genero: string | undefined;
+  private firestore: Firestore = inject(Firestore);
+  citas$: Observable<CitaMedica[]>;
+  usersCollection: CollectionReference;
+   
+ paciente: Usuario = new Usuario();
+ citaMedica: CitaMedica = new CitaMedica();
+
+ 
+ 
   
   constructor() {
+    this.usersCollection = collection(this.firestore, 'CitaMedica');
+
    
   }
 
-  AgregarCita(){
+ 
+
+  AgregarCita( ){
+
+    const nuevaCita = new CitaMedica(this.citaMedica.Fecha, this.citaMedica.Hora);
+
+  });
+
+  ValidarPacienteExiste(){
+
+  }
+
     
   }
+
+  
 
  
 }

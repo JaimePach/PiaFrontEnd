@@ -3,7 +3,7 @@ import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Doctor } from 'src/app/models/Doctor';
+import { CitaMedica } from 'src/app/models/CitaMedica';
 
 @Component({
   selector: 'app-doctor',
@@ -11,16 +11,17 @@ import { Doctor } from 'src/app/models/Doctor';
   styleUrls: ['./doctor.component.scss']
 })
 export class DoctorComponent {
-  doctor$: Observable<Doctor[]>;
+  doctor$: Observable<CitaMedica[]>;
   firestore: Firestore = inject(Firestore);
 
   @ViewChild(MatTabGroup) tabGroup: MatTabGroup;
 
   @Output() estado: string = 'Todas';
 
+
   constructor() { 
-    const itemCollection = collection(this.firestore, 'Doctor');
-    this.doctor$ = collectionData(itemCollection) as Observable<Doctor[]>;
+    const itemCollection = collection(this.firestore, 'CitaMedica');
+    this.doctor$ = collectionData(itemCollection) as Observable<CitaMedica[]>;
   }
 
   vistaActiva: string = 'grid';

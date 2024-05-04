@@ -9,30 +9,30 @@
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" (selectedTabChange)="cambiaEstado()">
     <mat-tab label="Ver todas">
       <app-card [estado]="estado" *ngIf="vistaActiva === 'grid'"></app-card>
-      <app-list *ngIf="vistaActiva === 'lista'"></app-list>
+      <app-list [estado]="estado" *ngIf="vistaActiva === 'lista'"></app-list>
     </mat-tab>
     <mat-tab label="Confirmadas" >
       <ng-template matTabContent>
         <app-card [estado]="estado"*ngIf="vistaActiva === 'grid'" ></app-card>
-        <app-list *ngIf="vistaActiva === 'lista'"></app-list>
+        <app-list [estado]="estado" *ngIf="vistaActiva === 'lista'"></app-list>
        </ng-template>
     </mat-tab>
     <mat-tab label="Por Confirmar">
       <ng-template matTabContent>
         <app-card [estado]="estado" *ngIf="vistaActiva === 'grid'"></app-card>
-        <app-list *ngIf="vistaActiva === 'lista'"></app-list>
+        <app-list [estado]="estado" *ngIf="vistaActiva === 'lista'"></app-list>
        </ng-template>
     </mat-tab>
     <mat-tab label="Canceladas">
       <ng-template matTabContent>
         <app-card [estado]="estado" *ngIf="vistaActiva === 'grid'"></app-card>
-        <app-list *ngIf="vistaActiva === 'lista'"></app-list>
+        <app-list [estado]="estado" *ngIf="vistaActiva === 'lista'"></app-list>
        </ng-template>
     </mat-tab>
     <mat-tab label="Completadas" >
       <ng-template matTabContent>
         <app-card [estado]="estado" *ngIf="vistaActiva === 'grid'"></app-card>
-        <app-list *ngIf="vistaActiva === 'lista'"></app-list>
+        <app-list [estado]="estado" *ngIf="vistaActiva === 'lista'"></app-list>
        </ng-template>
     </mat-tab>
   </mat-tab-group>
