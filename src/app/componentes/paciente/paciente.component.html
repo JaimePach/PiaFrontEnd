@@ -1,4 +1,4 @@
-
+<div class="contenidoForm">
 <form (ngSubmit)="AgregarCita()">
 
    <p>
@@ -8,12 +8,29 @@
     </mat-card>
    </p>
 
-  <p>
-    <mat-form-field>
-      <mat-label>Hora</mat-label>
-      <input matInput placeholder="Hora" type="time" name="Hora" #Hora="ngModel" [(ngModel)]="citaMedica.Hora" >
+   <p>
+   <mat-form-field>
+    <mat-label>Hora</mat-label>
+      <mat-select [(ngModel)]="citaMedica.Hora">
+        <mat-option *ngFor="let hora of horas" [value]="hora">{{ hora }}</mat-option>
+      </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+      <mat-select [(ngModel)]="citaMedica.Minutos">
+        <mat-option *ngFor="let minuto of minutos" [value]="minuto">{{ minuto }}</mat-option>
+      </mat-select>
     </mat-form-field>
-  </p>
+
+    <mat-form-field>
+      <mat-select
+       [(ngModel)]="citaMedica.Periodo">
+        <mat-option value="AM">AM</mat-option>
+        <mat-option value="PM">PM</mat-option>
+      </mat-select>
+  </mat-form-field>
+  
+   </p>
   
   <div class="example-container">
     <mat-form-field>
@@ -44,4 +61,4 @@
   </p>
   
 </form>
-
+</div>

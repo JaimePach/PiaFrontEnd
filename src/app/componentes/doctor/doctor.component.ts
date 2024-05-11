@@ -1,9 +1,7 @@
-import { Component, inject, Output } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Component, Output } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CitaMedica } from 'src/app/models/CitaMedica';
+
 
 @Component({
   selector: 'app-doctor',
@@ -11,8 +9,8 @@ import { CitaMedica } from 'src/app/models/CitaMedica';
   styleUrls: ['./doctor.component.scss']
 })
 export class DoctorComponent {
-  doctor$: Observable<CitaMedica[]>;
-  firestore: Firestore = inject(Firestore);
+
+
 
   @ViewChild(MatTabGroup) tabGroup: MatTabGroup;
 
@@ -20,9 +18,9 @@ export class DoctorComponent {
 
 
   constructor() { 
-    const itemCollection = collection(this.firestore, 'CitaMedica');
-    this.doctor$ = collectionData(itemCollection) as Observable<CitaMedica[]>;
   }
+
+ 
 
   vistaActiva: string = 'grid';
 

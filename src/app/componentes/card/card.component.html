@@ -1,22 +1,26 @@
-<div *ngIf="estado !=='Todas'">
-<div *ngFor="let paciente of Paciente$| async" class="card-container">
-  <mat-card *ngIf="paciente.Estado === estado" class="paciente-card">
-    <mat-card-header>
-      <div mat-card-avatar class="avatar"></div>
-      <mat-card-title>{{ paciente.Hora }}</mat-card-title>
-      <p class="card-text">{{ estado }}</p>
-    </mat-card-header>
-    </mat-card>
-  </div>
-  </div>
 
-  <div *ngIf="estado ==='Todas'">
-  <div *ngFor="let paciente of Paciente$| async" class="card-container">
+<div *ngIf="estado !== 'Todas'" class="Listado-Card">
+  <ng-container *ngFor="let paciente of citas">
+    <div class="card-container" *ngIf="paciente.Estado === estado">
+      <mat-card class="paciente-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ paciente.Hora }}</mat-card-title>
+          <p class="card-text">{{ paciente.Estado }}</p>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </ng-container>
+</div>
+
+
+  <div *ngIf="estado ==='Todas'" class="Listado-Card" >
+  <div *ngFor="let paciente of citas" class="card-container">
   <mat-card class="paciente-card">
     <mat-card-header>
-      <div mat-card-avatar class="avatar"></div>
+      <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{ paciente.Hora }}</mat-card-title>
-      <p class="card-text">{{ estado }}</p>
+      <p class="card-text">{{ paciente.Estado }}</p>
     </mat-card-header>
     </mat-card>
   </div>

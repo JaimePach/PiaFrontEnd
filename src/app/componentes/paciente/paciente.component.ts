@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CitaMedica } from 'src/app/models/CitaMedica';
 import { Usuario, IUsuario } from 'src/app/models/Usuario';
-import { addDoc, Firestore, collection, collectionData, CollectionReference, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 
 
@@ -15,18 +15,18 @@ import { Observable } from 'rxjs';
 
 export class PacienteComponent {
 
-  private firestore: Firestore = inject(Firestore);
-  citas$: Observable<CitaMedica[]>;
-  usersCollection: CollectionReference;
+  formulario: FormGroup;
+
    
  paciente: Usuario = new Usuario();
  citaMedica: CitaMedica = new CitaMedica();
 
- 
+ horas: number[] = Array.from({ length: 12 }, (_, i) => i + 1);
+
+ minutos: string[] = Array.from({ length: 60 }, (_, i) => i < 10 ? '0' + i : '' + i);
  
   
   constructor() {
-    this.usersCollection = collection(this.firestore, 'CitaMedica');
 
    
   }
@@ -35,9 +35,9 @@ export class PacienteComponent {
 
   AgregarCita( ){
 
-    const nuevaCita = new CitaMedica(this.citaMedica.Fecha, this.citaMedica.Hora);
+    //const nuevaCita = new CitaMedica(this.citaMedica.Fecha, this.citaMedica.Hora);
 
-  });
+  }
 
   ValidarPacienteExiste(){
 
@@ -49,5 +49,5 @@ export class PacienteComponent {
   
 
  
-}
+
 

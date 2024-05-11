@@ -5,11 +5,40 @@
   .mat-mdc-tab-group{
     --mat-tab-header-inactive-label-text-color: black;
     --mat-tab-header-inactive-hover-label-text-color: blue;
+    --mdc-tab-indicator-active-indicator-color: blue;
+    --mat-tab-header-active-label-text-color: blue;
+    --mat-tab-header-active-focus-indicator-color: blue;
+    
       max-width: 75%;
       margin-left: 5%;
       margin-right: 5%;
 
   }
+  span{
+    padding-bottom: 5%;
+  }
+
+  .flechas{
+    border: transparent;
+
+  }
+
+
+  .pantalla{
+    width: 20%;
+    margin-top: 2%;
+    margin-left: 5%;
+    
+  }
+  
+
+
+  #botones{
+    margin-left: 75%;
+  }
+
+  
+  
 
 
   

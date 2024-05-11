@@ -2,15 +2,19 @@ ul {
     list-style-type: none;
   }
 
+  .Listado-Card{
+    display: flex;
+    flex-wrap: wrap;
+  }
+ 
   .card-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    grid-gap: 40px; 
+    width: 50%;
   }
   
   .paciente-card {
-    display: flex; 
-    justify-content: center; 
+    width: 90%; 
+    display:grid;
+    margin: 1%; 
   }
   
   .mat-card {

@@ -1,10 +1,28 @@
 <h2>vista lista</h2>
-<mat-list *ngFor="let paciente of Paciente$ | async">
+
+<div *ngIf="estado !=='Todas'">
+<mat-list *ngFor="let paciente of citas">
+    <mat-list-item *ngIf="paciente.Estado === estado">
+      <div mat-card-avatar class="example-header-image"></div>
+    </mat-list-item>
     <mat-list-item *ngIf="paciente.Estado === estado">
         {{paciente.Hora}}
+        {{paciente.Estado}}
     </mat-list-item>
     <mat-divider></mat-divider>
-
   </mat-list>
+</div>
 
+<div *ngIf="estado ==='Todas'">
+    <mat-list *ngFor="let paciente of citas">
+        <mat-list-item>
+         <div mat-card-avatar class="example-header-image"></div>
+        </mat-list-item>
+        <mat-list-item>
+            {{paciente.Hora}}
+            {{paciente.Estado}}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </div>
  

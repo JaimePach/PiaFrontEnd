@@ -1,7 +1,8 @@
-import { Component, inject, Input, AfterViewChecked } from '@angular/core';
+import { Component, inject, Input, AfterViewChecked,OnChanges ,SimpleChanges } from '@angular/core';
 import { Firestore, collection, collectionData, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CitaMedica } from 'src/app/models/CitaMedica';
+import { CitaMedicaService } from 'src/app/services/cita-medica.service';
 
 
 @Component({
@@ -10,24 +11,28 @@ import { CitaMedica } from 'src/app/models/CitaMedica';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements AfterViewChecked{
-  Paciente$: Observable<CitaMedica[]>;
   firestore: Firestore = inject(Firestore);
+  citas: CitaMedica[];
 
-  
 
-  @Input() estado: string ='';
+  @Input() estado: string ='Canceladas';
 
-  ngOnInit(): void {
-    
-  }
 
   ngAfterViewChecked(): void {
    
   }
 
 
-  constructor() { 
-    const itemCollection = collection(this.firestore, 'CitaMedica');
-    this.Paciente$ = collectionData(itemCollection) as Observable<CitaMedica[]>;
+  constructor(private citaMedicaService:CitaMedicaService) { 
+ 
+   
   }
+
+  ngOnInit(): void {
+    this.citaMedicaService.getCitasMedicas().subscribe(citas => {
+      this.citas = citas;
+    })
+  }
+
+  
 }
