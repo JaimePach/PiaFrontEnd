@@ -1,5 +1,46 @@
 ul {
     list-style-type: none;
   }
+  .cita-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .avatar {
+    width: 10%;
+    height: 10%;
+    border-radius: 40%;
+    background-color: #ccc;
+    margin-right: 1%;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .mat-mdc-list-item, .mat-mdc-list-option {
+    width: 33%;
+
+}
+.mat-mdc-list-base {
+  display: flex; 
+  flex-direction: row; 
+  flex-wrap: nowrap; /* Evita que los elementos se envuelvan a la siguiente línea */
+  justify-content: flex-start; 
+  align-items: center;
+}
+.mat-mdc-tab-group {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+
+  
+  
+  
 
   

@@ -1,29 +1,50 @@
 
 <div *ngIf="estado !== 'Todas'" class="Listado-Card">
   <ng-container *ngFor="let paciente of citas">
+    <ng-container *ngFor="let usuario of usuarios" >
+      <ng-container class="ng-contenido" *ngIf="paciente.PacienteId === usuario.IdUsuario">
     <div class="card-container" *ngIf="paciente.Estado === estado">
       <mat-card class="paciente-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{ paciente.Hora }}</mat-card-title>
-          <p class="card-text">{{ paciente.Estado }}</p>
+          <mat-card-title>
+            <div class="info">
+              <div>{{ usuario.Nombre }} {{ usuario.ApellidoPaterno }}</div>
+              <div>{{ paciente.Hora }}:{{ paciente.Minutos }} {{ paciente.Periodo }}</div>
+            </div>
+          </mat-card-title>
+          <button  mat-flat-button color="warn"> {{ paciente.Estado }}</button>
         </mat-card-header>
       </mat-card>
     </div>
   </ng-container>
+</ng-container>
+</ng-container>
 </div>
 
 
-  <div *ngIf="estado ==='Todas'" class="Listado-Card" >
-  <div *ngFor="let paciente of citas" class="card-container">
+ <div *ngIf="estado ==='Todas'" class="Listado-Card" >
+  <ng-container *ngFor="let paciente of citas" >
+    <ng-container *ngFor="let usuario of usuarios" >
+    <div class="card-container" *ngIf="paciente.PacienteId === usuario.IdUsuario">
   <mat-card class="paciente-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{ paciente.Hora }}</mat-card-title>
-      <p class="card-text">{{ paciente.Estado }}</p>
+      <mat-card-title>
+        <div class="info">
+          <div>{{ usuario.Nombre }} {{ usuario.ApellidoPaterno }}</div>
+          <div>{{ paciente.Hora }}:{{ paciente.Minutos }} {{ paciente.Periodo }}</div>
+        </div>
+      </mat-card-title>
+      <button  mat-flat-button color="warn"> {{ paciente.Estado }}</button>
     </mat-card-header>
     </mat-card>
   </div>
+  </ng-container>
+</ng-container>
 </div>
+
+
+
  
   

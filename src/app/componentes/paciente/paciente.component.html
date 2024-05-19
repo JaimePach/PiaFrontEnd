@@ -1,64 +1,64 @@
 <div class="contenidoForm">
-<form (ngSubmit)="AgregarCita()">
-
-   <p>
-  <mat-label>Seleccionar Fecha:</mat-label>
-    <mat-card class="demo-inline-calendar-card">
-      <mat-calendar [(selected)]="citaMedica.Fecha"></mat-calendar>
-    </mat-card>
-   </p>
-
-   <p>
-   <mat-form-field>
-    <mat-label>Hora</mat-label>
-      <mat-select [(ngModel)]="citaMedica.Hora">
-        <mat-option *ngFor="let hora of horas" [value]="hora">{{ hora }}</mat-option>
-      </mat-select>
+  <form [formGroup]="formCitaMedica" (ngSubmit)="AgregarCita()">
+    <mat-form-field>
+      <mat-label>Fecha: </mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="Fecha">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <p>
+      <mat-form-field>
+        <mat-label>Hora</mat-label>
+        <mat-select formControlName="Hora">
+          <mat-option *ngFor="let hora of horas" [value]="hora">{{ hora }}</mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field>
-      <mat-select [(ngModel)]="citaMedica.Minutos">
-        <mat-option *ngFor="let minuto of minutos" [value]="minuto">{{ minuto }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+        <mat-label>Minutos</mat-label>
+        <mat-select formControlName="Minutos">
+          <mat-option *ngFor="let minuto of minutos" [value]="minuto">{{ minuto }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-select
-       [(ngModel)]="citaMedica.Periodo">
-        <mat-option value="AM">AM</mat-option>
-        <mat-option value="PM">PM</mat-option>
-      </mat-select>
-  </mat-form-field>
-  
-   </p>
-  
-  <div class="example-container">
-    <mat-form-field>
-      <mat-label>Correo Electronico: </mat-label>
-      <input matInput placeholder="pat@example.com" name="correo" #correo="ngModel" [(ngModel)]="paciente.correo" required >
-    </mat-form-field>
-  </div>
-  
-  <p>
-    <mat-form-field>
-      <mat-label>Nombre de Paciente:</mat-label>
-      <input matInput placeholder="Nombre" type="text" name="Nombre" #Nombre="ngModel" [(ngModel)]="paciente.Nombre" >
-    </mat-form-field>
-  </p>
-  
-  <p>
-    <mat-form-field>
-      <mat-label>Sexo:</mat-label>
-      <mat-select placeholder="Elige Sexo" [(value)]="paciente.genero" name="genero">
-        <mat-option value="masculino">Masculino</mat-option>
-        <mat-option value="femenino">Femenino</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </p>
-  
-  <p>
-    <button mat-raised-button color="primary" type="submit">Guardar</button>
-  </p>
-  
-</form>
+      <mat-form-field>
+        <mat-label>Periodo</mat-label>
+        <mat-select formControlName="Periodo">
+          <mat-option value="AM">AM</mat-option>
+          <mat-option value="PM">PM</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Correo Electronico: </mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="correo">
+      </mat-form-field>
+    </div>
+
+    <p>
+      <mat-form-field>
+        <mat-label>Nombre de Paciente:</mat-label>
+        <input matInput placeholder="Nombre" type="text" formControlName="Nombre">
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <mat-label>Sexo:</mat-label>
+        <mat-select placeholder="Elige Sexo" formControlName="genero">
+          <mat-option value="masculino">Masculino</mat-option>
+          <mat-option value="femenino">Femenino</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </p>
+
+  </form>
 </div>
+

@@ -11,6 +11,7 @@ ul {
     width: 50%;
   }
   
+  
   .paciente-card {
     width: 90%; 
     display:grid;
@@ -19,4 +20,17 @@ ul {
   
   .mat-card {
     width: 40%; 
+  }
+  .avatar {
+    width: 10%;
+    height: 10%;
+    border-radius: 40%;
+    background-color: #ccc;
+    margin-right: 1%;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }

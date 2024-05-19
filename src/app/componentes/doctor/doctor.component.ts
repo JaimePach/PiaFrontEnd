@@ -1,6 +1,8 @@
 import { Component, Output } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -17,7 +19,8 @@ export class DoctorComponent {
   @Output() estado: string = 'Todas';
 
 
-  constructor() { 
+  constructor( private authService: AuthService,
+    private router: Router) { 
   }
 
  
@@ -46,5 +49,13 @@ export class DoctorComponent {
       this.estado = 'Completadas';
     }
   }
+
+  onClick() {
+   this.authService.logout()
+      .then(() => {
+        this.router.navigate(['/Login']);
+      })
+      .catch(error => console.log(error));
+    }
 
 }

@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CitaMedica } from 'src/app/models/CitaMedica';
-import { Usuario, IUsuario } from 'src/app/models/Usuario';
-import { Observable } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CitaMedicaService } from 'src/app/services/cita-medica.service';
+import { DoctorService } from 'src/app/services/doctor.service';
 
 
 
@@ -15,10 +15,8 @@ import { FormGroup } from '@angular/forms';
 
 export class PacienteComponent {
 
-  formulario: FormGroup;
-
+  formCitaMedica: FormGroup;
    
- paciente: Usuario = new Usuario();
  citaMedica: CitaMedica = new CitaMedica();
 
  horas: number[] = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -26,22 +24,64 @@ export class PacienteComponent {
  minutos: string[] = Array.from({ length: 60 }, (_, i) => i < 10 ? '0' + i : '' + i);
  
   
-  constructor() {
+  constructor(private fb: FormBuilder,
+     private citaMedicaService: CitaMedicaService,
+     private doctorService: DoctorService) {
 
    
   }
+  ngOnInit(): void {
+    this.formCitaMedica = this.fb.group({
+      Fecha: ['', Validators.required],
+      Hora: ['', Validators.required],
+      Minutos: ['', Validators.required],
+      Periodo: ['', Validators.required],
+      correo: ['', Validators.required],
+      Nombre: ['', Validators.required],
+      genero: ['', Validators.required]
+    });
+  }
+
 
  
 
-  AgregarCita( ){
-
-    //const nuevaCita = new CitaMedica(this.citaMedica.Fecha, this.citaMedica.Hora);
-
+  async AgregarCita(): Promise<void> {
+    try {
+      const { userId, esDoctor } = await this.doctorService.ObtenerDatosUsuario();
+  
+      if (!userId) {
+        console.log('El Usuario no Existe');
+        return; 
+      } else if (esDoctor) {
+        console.log('El usuario no es un paciente');
+        return; 
+      }
+  
+      const IdDoctor = await this.doctorService.AsignarDoctor();
+      const randomIndex = Math.floor(Math.random() * 10000);
+  
+      const nuevaCitaMedica: CitaMedica = {
+        IdCitaMedica: randomIndex,
+        Estado: "Por Confirmar",
+        Fecha: this.formCitaMedica.get('Fecha')?.value,
+        Hora: this.formCitaMedica.get('Hora')?.value,
+        Minutos: this.formCitaMedica.get('Minutos')?.value,
+        Periodo: this.formCitaMedica.get('Periodo')?.value,
+        DoctorId: IdDoctor,
+        PacienteId: userId
+      };
+  
+      const response = await this.citaMedicaService.addCitaMedica(nuevaCitaMedica);
+      console.log(response);
+    } catch (error) {
+      console.error('Error al agregar la cita médica:', error);
+    }
   }
+  
 
-  ValidarPacienteExiste(){
 
-  }
+
+  
 
     
   }

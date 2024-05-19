@@ -22,6 +22,8 @@
 
 <h3 class="pantalla">Mis Citas</h3>
 <div id="botones">
+
+  <button (click)="onClick()" class="btn btn-outline-danger mt-5">Logout</button>
 <button mat-icon-button (click)="cambiarVista('grid')" [disabled]="vistaActiva==='grid'">
   <mat-icon fontIcon="grid_view"></mat-icon>
 </button>

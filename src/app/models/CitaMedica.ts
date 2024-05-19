@@ -9,6 +9,7 @@ export interface ICitaMedica{
     PacienteId: number;
 
 }
+
 export class CitaMedica{
     IdCitaMedica: number;
     Estado: string;

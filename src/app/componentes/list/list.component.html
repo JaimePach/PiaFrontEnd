@@ -1,28 +1,51 @@
-<h2>vista lista</h2>
 
 <div *ngIf="estado !=='Todas'">
 <mat-list *ngFor="let paciente of citas">
+  <ng-container *ngFor="let usuario of usuarios">
+    <ng-container class="ng-contenido" *ngIf="paciente.PacienteId === usuario.IdUsuario">
     <mat-list-item *ngIf="paciente.Estado === estado">
       <div mat-card-avatar class="example-header-image"></div>
     </mat-list-item>
-    <mat-list-item *ngIf="paciente.Estado === estado">
-        {{paciente.Hora}}
-        {{paciente.Estado}}
+ 
+    <mat-list-item *ngIf="paciente.Estado === estado" class="cita-item">
+      <div class="info">
+        <div>{{ usuario.Nombre }} {{ usuario.ApellidoPaterno }}</div>
+        <div>{{ paciente.Hora }}:{{ paciente.Minutos }} {{ paciente.Periodo }}</div>
+      </div>
     </mat-list-item>
+    <mat-list-item *ngIf="paciente.Estado === estado">
+     <button mat-flat-button color="warn"> {{ paciente.Estado }}</button>
+    </mat-list-item>
+    
     <mat-divider></mat-divider>
+  </ng-container>
+</ng-container>
   </mat-list>
 </div>
 
-<div *ngIf="estado ==='Todas'">
-    <mat-list *ngFor="let paciente of citas">
-        <mat-list-item>
-         <div mat-card-avatar class="example-header-image"></div>
-        </mat-list-item>
-        <mat-list-item>
-            {{paciente.Hora}}
-            {{paciente.Estado}}
-        </mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-list>
-    </div>
+<div *ngIf="estado === 'Todas'">
+  <mat-list *ngFor="let paciente of citas">
+    <ng-container *ngFor="let usuario of usuarios">
+      <ng-container class="ng-contenido" *ngIf="paciente.PacienteId === usuario.IdUsuario">
+     <mat-list-item>
+         <div mat-card-avatar class="avatar"></div>
+     </mat-list-item>
+    <mat-list-item class="cita-item">
+      <div class="info">
+        <div>{{ usuario.Nombre }} {{ usuario.ApellidoPaterno }}</div>
+        <div>{{ paciente.Hora }}:{{ paciente.Minutos }} {{ paciente.Periodo }}</div>
+      </div>
+    </mat-list-item>
+    <mat-list-item>
+     <button  mat-flat-button color="warn"> {{ paciente.Estado }}</button>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    </ng-container>
+  </ng-container>
+  </mat-list>
+</div>
+
+
+
+
  
